@@ -10,13 +10,11 @@ var factorial = function(n) {
 	if(n <0){
 		return null;
 	}
-
 	if(n===0){
 		return 1
 	}else{
 		return n*factorial(n-1);
 	}
-
 };
 
 // 2. Compute the sum of an array of integers.
@@ -116,10 +114,10 @@ var range = function(x, y) {
 // exponent(4,3); // 64
 // https://www.khanacademy.org/computing/computer-science/algorithms/recursive-algorithms/a/computing-powers-of-a-number
 var exponent = function(base, exp) {
-    if(exp >0){
+    if(exp >1){
         return base*exponent(base,exp-1);
-    }else if(exp ===0){
-      	return 1;
+    }else if(exp ===1){
+      	return base;
     }else{
         return exponent(base,exp+1)/base;
     }
