@@ -428,7 +428,7 @@
 
         exponent.reset();
         exponent(19,7);
-        expect(exponent.callCount).to.be.at.most(7);
+        expect(exponent.callCount).to.be.at.most(6);
       });
 
       // remove the 'x' to enable test

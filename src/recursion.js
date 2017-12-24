@@ -10,11 +10,13 @@ var factorial = function(n) {
 	if(n <0){
 		return null;
 	}
+
 	if(n===0){
 		return 1
 	}else{
 		return n*factorial(n-1);
 	}
+
 };
 
 // 2. Compute the sum of an array of integers.
@@ -114,29 +116,15 @@ var range = function(x, y) {
 // exponent(4,3); // 64
 // https://www.khanacademy.org/computing/computer-science/algorithms/recursive-algorithms/a/computing-powers-of-a-number
 var exponent = function(base, exp) {
-    if(exp >1){
+    if(exp >0){
         return base*exponent(base,exp-1);
-    }else if(exp ===1){
-      	return base;
+    }else if(exp ===0){
+      	return 1;
     }else{
         return exponent(base,exp+1)/base;
     }
 };
 
-/*
-var exponent = function(base, exp) {
-	if(exp ===0){
-	  return 1;
-	}else{
-      if(exp >0){
-        return base*exponent(base,exp-1);
-      }else{
-         return 1/base*exponent(base,exp+1);
-      }
-        
-	}
-};
-*/
 
 // 8. Determine if a number is a power of two.
 // powerOfTwo(1); // true
@@ -184,15 +172,34 @@ var palindrome = function(string) {
 // modulo(5,2) // 1
 // modulo(17,5) // 2
 // modulo(22,6) // 4
+// 
 var modulo = function(x, y) {
 	if(x===0 && y===0){
 	  return NaN;
 	}
+	if(x>=0&&y>0){
+		if(x<y){
+		  return x;
+		}
+		return modulo(x-y,y);
 
-	if(x<y){
-	  return x;
+	}else{
+		y<0 ? y=0-y:y;
+		
+		if(x>=0){
+			if(x<y){
+				return x;
+			}
+			return modulo(x-y,y);
+		}
+
+		if(x<=0){
+			if(0-x<y){
+				return x;
+			}
+			return modulo(x+y,y);
+		}
 	}
-	return modulo(x-y,y);
 };
 
 
@@ -217,9 +224,9 @@ var multiply = function(x, y) {
 	}
 	
 	if(y<0){
-	  return y + multiply(x-1,y)
+	  return y + multiply(x-1,y);
 	}else{
-	  return x + multiply(x,y-1)
+	  return x + multiply(x,y-1);
 	}
 };
 
